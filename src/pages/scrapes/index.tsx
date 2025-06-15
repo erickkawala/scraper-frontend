@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 interface Scrape {
-    id: string;         // or number depending on your DB
-    title: string;      // or whatever field you use for display
+    id: string; // or number depending on your DB
 }
 
 const ScrapesPage: React.FC = () => {
@@ -19,16 +18,18 @@ const ScrapesPage: React.FC = () => {
     }, []);
 
     return (
-        <div className="p-4">
-            <h1 className="text-xl font-bold mb-4">Scrapes</h1>
-            <ul className="space-y-2">
-                {scrapes.map(scrape => (
+        <div className="p-8 max-w-2xl mx-auto">
+            <h1 className="text-3xl font-extrabold mb-6 text-center">Scrapes</h1>
+            <ul className="space-y-4">
+                {scrapes.map((scrape) => (
                     <li key={scrape.id}>
                         <Link
-                            className="text-blue-600 hover:underline"
                             href={`/scrapes/${scrape.id}`}
+                            className="block border border-gray-300 rounded-lg p-4 hover:bg-gray-100 hover:border-blue-500 transition"
                         >
-                            {scrape.title}
+                            <span className="text-lg font-medium text-blue-700">
+                                Scrape {scrape.id}
+                            </span>
                         </Link>
                     </li>
                 ))}
